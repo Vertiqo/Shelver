@@ -1,5 +1,5 @@
 import json
-from funcs import load, new_entry, save, search
+from funcs import load, new_entry, save, search, print_results
 from uuid import uuid4
 
 
@@ -22,11 +22,7 @@ def main():
             #print("Search selected")
             query = input("What are you searching for?\n")
             result = search(archive, query)
-            if len(result) == 0:
-                print("nothing found")
-            else:
-                for movie in result:
-                    print(movie)
+            print_results(result)
             break
         else:
             print("wrong entry")

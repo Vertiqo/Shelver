@@ -20,7 +20,7 @@ def load():
 # Adding a new entry to the archive by asking for user input
 def new_entry():
     new = {}
-    new["id"] = str(uuid4())
+    
     title = input("Enter the Title\n").strip()
     while title =="":
          print("Title cant be blank!")
@@ -36,6 +36,7 @@ def new_entry():
          cast.append(actor)
     new["cast"] = cast
     new["genre"] = input("Enter Genre\n").strip()
+    new["id"] = str(uuid4())
 
     return new
 
@@ -48,7 +49,43 @@ def save(archive):
 
 def search(archive, query):
      result = []
+     #making the search word lowercase
+     q = query.lower()
      for entry in archive:
-          if query in entry["title"] or query in entry["director"] or query in entry["year"] or query in entry["cast"] or query in entry["genre"]:
+          #getting information per entry from the archive in lowercase
+          #converting to str is important for the "year"
+          title = str(entry.get("title", "")).lower()
+          director = str(entry.get("director", "")).lower()
+          year = str(entry.get("year", "")).lower()
+          genre = str(entry.get("year, ")).lower()
+
+          #cast is a list, any returns true if any list entry matches
+          cast_list = entry.get("cast", [])
+          if isinstance(cast_list, list):
+               cast_match = any(q in actor.lower() for actor in cast_list)
+          else:
+               cast_match = q in str(cast_list).lower()
+
+          if (q in title or
+              q in director or
+              q in year or
+              q in genre or cast_match):
                result.append(entry)
+
      return result
+
+def print_results(results):
+     if not results:
+          print("\nNo entries have been found.\n")
+          return
+
+     print(f"\n*** Found {len(results)} entries ***")
+     for i, item in enumerate(results, start = 1):
+          cast = item.get("cast", [])
+          cast_str = ", ".join(cast) if isinstance(cast, list) else str(cast)
+
+          print(f"\n[{i}] {item.get('title', 'Unknown Title')} ({item.get('year', 'N/A')})")
+          print(f"  Director: {item.get('director', 'N/A')}")
+          print(f"  Genre:    {item.get('genre', 'N/A')}")
+          print(f"  Cast:     {cast_str}")
+     print("\n********************")

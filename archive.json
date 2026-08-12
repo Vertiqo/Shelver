@@ -20,5 +20,17 @@
     ],
     "genre": "Drama",
     "id": "a0e90274-b3cd-48a7-aa83-afd93b47aa5d"
+  },
+  {
+    
+    "title": "Catch me if you can",
+    "director": "Steven Spielberg",
+    "year": "2002",
+    "cast": [
+      "Tom Hanks",
+      "Leonardo Dicaprio"
+    ],
+    "genre": "Comedy",
+    "id": "57afca6e-0f69-4633-9bef-b20d7ede6822"
   }
 ]

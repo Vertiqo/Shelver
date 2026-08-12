@@ -22,7 +22,6 @@
     "id": "a0e90274-b3cd-48a7-aa83-afd93b47aa5d"
   },
   {
-    
     "title": "Catch me if you can",
     "director": "Steven Spielberg",
     "year": "2002",
@@ -32,5 +31,18 @@
     ],
     "genre": "Comedy",
     "id": "57afca6e-0f69-4633-9bef-b20d7ede6822"
+  },
+  {
+    "title": "One Battle after another",
+    "director": "Paul Thomas Anderson",
+    "year": "2025",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Sean Penn",
+      "Benicio Del Toro",
+      "Regina Hall"
+    ],
+    "genre": "Drama",
+    "id": "5925ea34-afa8-4777-8c65-524f73fc41fc"
   }
 ]

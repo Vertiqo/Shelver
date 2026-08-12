@@ -1,5 +1,5 @@
 import json
-from funcs import load, new_entry, save, search, print_results
+from funcs import load, new_entry, save, search, print_results, edit_entry
 from uuid import uuid4
 
 
@@ -10,7 +10,7 @@ def main():
     
 
     while True:
-        choice = input("1 - New Entry\n2 - Search existing Entries\n")
+        choice = input("1 - New Entry\n2 - Search existing entries\n3 - Edit existing entries\n")
 
         if choice == "1":
             print("New Entry selected")
@@ -24,6 +24,12 @@ def main():
             result = search(archive, query)
             print_results(result)
             break
+
+        elif choice == "3":
+            query = input("What entry do you want to edit?\n")
+            result = search(archive, query)
+            print_results(result)
+            edit_entry(archive, result)
         else:
             print("wrong entry")
 
